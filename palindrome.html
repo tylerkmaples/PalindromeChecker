@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Palindrome Check</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url(http://paperlief.com/images/blue-purple-gradient-wallpaper-4.jpg);
+            color: #ffffff;
+        }
+        .col-md-12 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .col-md-6 {
+            text-align: center;
+            padding: 10px;
+        }
+
+        hr {
+            border-color: #ffffffe1;
+        }
+
+        button {
+            background-color: darkslateblue!important;
+            border-color: darkslateblue!important;
+            color: #ffffff!important;
+        }
+    
+    </style>
+
+    </head>
+
+<body>
+    <!-- Container-fluid holds all content -->
+    <div class="container-fluid">
+        <!-- container will hold heading and input box -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Palindrome Check</h1>
+                    <h3>Enter a word or phrase to check if it's a Palindrome</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Enter your word/phrase here"
+                            aria-label="Palindrome input" aria-describedby="button-addon2" id="userInput">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="submitBtn">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container will hold list of input words -->
+        <div class="container">
+            <div class="row">
+                <!-- col holds palindromes -->
+                <div class="col-md-6">
+                    <h1>Palindrome</h1>
+                    <hr>
+                    <div id="yesList"></div>
+                </div>
+                <!-- col holds palindrnooos -->
+                <div class="col-md-6">
+                    <h1>Not a Palindrome</h1>
+                    <hr>
+                    <div id='notList'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        
+        // --- event listener when button clicked --- //
+        $('#submitBtn').on('click', function (event) {
+            event.preventDefault();
+
+            // --- Grab user input and store it into a variable --- //
+            const palInput = $('#userInput').val().trim();
+
+            // --- Loop through palInput to check if palindrome --- //
+            for (let i = 0; i < palInput.length; i++) {
+
+                // --- condition for non-palindromes --- //
+                if (palInput[i] !== palInput[palInput.length - i - 1]) {
+                    $('#userInput').val('');
+                    $("<h3 />", { text: palInput }).prependTo("#notList")
+                    return false;
+                }
+                else {
+                    $('#userInput').val('');
+                    $("<h3 />", { text: palInput }).prependTo("#yesList");
+                    return true;
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>
