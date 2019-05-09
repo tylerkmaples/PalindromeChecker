@@ -65,13 +65,13 @@
         <div class="container">
             <div class="row">
                 <!-- col holds palindromes -->
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <h1>Palindrome</h1>
                     <hr>
                     <div id="yesList"></div>
                 </div>
                 <!-- col holds palindrnooos -->
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <h1>Not a Palindrome</h1>
                     <hr>
                     <div id='notList'></div>
@@ -104,9 +104,10 @@
                 // --- condition for non-palindromes --- //
                 if (palInput[i] !== palInput[palInput.length - i - 1]) {
                     $('#userInput').val('');
-                    $("<h3 />", { text: palInput }).prependTo("#notList")
+                    $("<h3 />", { text: palInput }).prependTo("#notList");
                     return false;
                 }
+
                 else {
                     $('#userInput').val('');
                     $("<h3 />", { text: palInput }).prependTo("#yesList");
